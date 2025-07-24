@@ -1,0 +1,15 @@
+
+> runclub-directory@0.1.0 dev
+> next dev --turbopack
+
+   ▲ Next.js 15.4.3 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://10.20.9.36:3000
+
+ ✓ Starting...
+ ✓ Ready in 1059ms
+ ○ Compiling / ...
+ ✓ Compiled / in 2.8s
+ GET / 200 in 3182ms
+ HEAD / 200 in 99ms
+[?25h
