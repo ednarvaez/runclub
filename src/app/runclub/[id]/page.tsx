@@ -32,24 +32,24 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
   const hasRating = runClub.rating && runClub.rating > 0;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Breadcrumbs */}
-      <nav className="bg-white border-b border-gray-200">
+      <nav className="bg-slate-100 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-2 py-4 text-sm">
-            <Link href="/" className="text-green-600 hover:text-green-700">
+            <Link href="/" className="text-emerald-600 hover:text-emerald-700">
               Home
             </Link>
-            <ChevronRight className="h-4 w-4 text-gray-400" />
-            <Link href="/search" className="text-green-600 hover:text-green-700">
+            <ChevronRight className="h-4 w-4 text-slate-400" />
+            <Link href="/search" className="text-emerald-600 hover:text-emerald-700">
               Run Clubs
             </Link>
-            <ChevronRight className="h-4 w-4 text-gray-400" />
-            <Link href={`/search?city=${encodeURIComponent(runClub.city)}`} className="text-green-600 hover:text-green-700">
+            <ChevronRight className="h-4 w-4 text-slate-400" />
+            <Link href={`/search?city=${encodeURIComponent(runClub.city)}`} className="text-emerald-600 hover:text-emerald-700">
               {runClub.city}
             </Link>
-            <ChevronRight className="h-4 w-4 text-gray-400" />
-            <span className="text-gray-900 font-medium">{runClub.name}</span>
+            <ChevronRight className="h-4 w-4 text-slate-400" />
+            <span className="text-slate-900 font-medium">{runClub.name}</span>
           </div>
         </div>
       </nav>
@@ -59,11 +59,11 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Header */}
-            <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div className="bg-slate-100 rounded-lg shadow-sm p-6 mb-6 border border-slate-200">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">{runClub.name}</h1>
-                  <div className="flex items-center text-gray-600 mb-2">
+                  <h1 className="text-3xl font-bold text-slate-900 mb-2">{runClub.name}</h1>
+                  <div className="flex items-center text-slate-600 mb-2">
                     <MapPin className="h-5 w-5 mr-2" />
                     <span>{runClub.full_address}</span>
                   </div>
@@ -71,7 +71,7 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
                     <div className="flex items-center">
                       <StarRating rating={runClub.rating || 0} showNumber size="md" />
                       {runClub.reviews > 0 && (
-                        <span className="ml-2 text-gray-600">
+                        <span className="ml-2 text-slate-600">
                           ({runClub.reviews} reviews)
                         </span>
                       )}
@@ -79,11 +79,11 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
                   )}
                 </div>
                 <div className="flex space-x-2">
-                  <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-md flex items-center">
+                  <button className="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-md flex items-center">
                     <Star className="h-4 w-4 mr-1" />
                     Save
                   </button>
-                  <button className="bg-blue-50 hover:bg-blue-100 text-blue-700 px-4 py-2 rounded-md flex items-center">
+                  <button className="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-4 py-2 rounded-md flex items-center">
                     <ExternalLink className="h-4 w-4 mr-1" />
                     Share
                   </button>
@@ -92,8 +92,8 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
             </div>
 
             {/* Image Gallery */}
-            <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
-              <div className="relative h-96 bg-gray-200">
+            <div className="bg-slate-100 rounded-lg shadow-sm overflow-hidden mb-6 border border-slate-200">
+              <div className="relative h-96 bg-slate-200">
                 <Image
                   src={imageUrl}
                   alt={runClub.name}
@@ -103,6 +103,35 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
                 />
               </div>
             </div>
+
+            {/* Location Map */}
+            {runClub.latitude && runClub.longitude && (
+              <div className="bg-slate-100 rounded-lg shadow-sm overflow-hidden mb-6 border border-slate-200">
+                <div className="p-4 border-b border-slate-200">
+                  <h3 className="text-lg font-semibold text-slate-900 flex items-center">
+                    <MapPin className="h-5 w-5 mr-2" />
+                    Location
+                  </h3>
+                </div>
+                <div className="relative h-80">
+                  <Image
+                    src={`https://maps.googleapis.com/maps/api/staticmap?center=${runClub.latitude},${runClub.longitude}&zoom=15&size=800x400&maptype=roadmap&markers=color:red%7Clabel:R%7C${runClub.latitude},${runClub.longitude}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || 'AIzaSyDummy'}`}
+                    alt={`Map showing location of ${runClub.name}`}
+                    fill
+                    className="object-cover"
+                    unoptimized={false}
+                  />
+                  {/* Fallback for when no API key */}
+                  <div className="absolute inset-0 bg-slate-200 flex items-center justify-center">
+                    <div className="text-center text-slate-600">
+                      <MapPin className="h-12 w-12 mx-auto mb-2" />
+                      <p className="font-medium">Map Location</p>
+                      <p className="text-sm">{runClub.full_address}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* About Section */}
             <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
@@ -210,28 +239,28 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
 
               <div className="mt-6 space-y-3">
                 {runClub.phone && (
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-slate-600">
                     <Phone className="h-4 w-4 mr-3" />
                     <span>{runClub.phone}</span>
                   </div>
                 )}
                 
                 {runClub.email_1 && (
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-slate-600">
                     <Mail className="h-4 w-4 mr-3" />
-                    <a href={`mailto:${runClub.email_1}`} className="hover:text-blue-600">
+                    <a href={`mailto:${runClub.email_1}`} className="hover:text-emerald-600">
                       {runClub.email_1}
                     </a>
                   </div>
                 )}
                 
                 {runClub.site && (
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-sm text-slate-600">
                     <Globe className="h-4 w-4 mr-3" />
                     <a 
                       href={runClub.site} 
                       target="_blank" 
-                      className="hover:text-blue-600 truncate"
+                      className="hover:text-emerald-600 truncate"
                     >
                       Visit Website
                     </a>
@@ -245,10 +274,10 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
         {/* Similar Run Clubs */}
         {similarRunClubs.length > 0 && (
           <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-slate-900 mb-2">
               Similar run clubs in {runClub.city}
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-slate-600 mb-6">
               Explore other highly-rated run club options with similar characteristics in your area.
             </p>
             
@@ -261,7 +290,7 @@ export default async function RunClubDetailPage({ params }: RunClubDetailPagePro
             <div className="text-center mt-8">
               <Link 
                 href={`/search?city=${encodeURIComponent(runClub.city)}`}
-                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+                className="inline-flex items-center text-emerald-600 hover:text-emerald-700 font-medium"
               >
                 Show all run clubs in {runClub.city}
                 <ChevronRight className="h-4 w-4 ml-1" />

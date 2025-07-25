@@ -12,18 +12,18 @@ export default function Home() {
   const majorCities = getMajorCities();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="bg-white">
+      <section className="bg-slate-100">
         <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-            Find the <span className="text-blue-500">best</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-4">
+            Find the <span className="text-emerald-600">best</span>
             <br />
-            <span className="text-orange-500">run club</span> near you
+            <span className="text-teal-600">run club</span> near you
           </h1>
           
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Curated <span className="text-orange-500 font-medium">running groups</span> picks delivered to your inbox
+          <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+            Curated <span className="text-teal-600 font-medium">running groups</span> picks delivered to your inbox
           </p>
 
           {/* Search Bar */}
@@ -31,7 +31,7 @@ export default function Home() {
             <SearchBar />
           </div>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-slate-500">
             Join <span className="font-medium">3,650+</span> runners • Unsubscribe anytime.
           </p>
         </div>
@@ -40,10 +40,10 @@ export default function Home() {
       {/* Featured Run Clubs */}
       <section className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Find <span className="text-green-500">run clubs</span> in <span className="text-orange-500">minutes, not months</span>
+          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            Find <span className="text-emerald-600">run clubs</span> in <span className="text-teal-600">minutes, not months</span>
           </h2>
-          <p className="text-gray-600">
+          <p className="text-slate-600">
             with robust provider data, verified reviews and one-click tours.
           </p>
         </div>
@@ -56,12 +56,12 @@ export default function Home() {
       </section>
 
       {/* Major Cities */}
-      <section className="bg-white">
+      <section className="bg-slate-100">
         <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-2">
-            Explore <span className="text-purple-500">Run Clubs</span> in <span className="text-orange-500">Major Metros</span>
+          <h2 className="text-3xl font-bold text-center mb-2 text-slate-900">
+            Explore <span className="text-emerald-600">Run Clubs</span> in <span className="text-teal-600">Major Metros</span>
           </h2>
-          <p className="text-center text-gray-600 mb-8">
+          <p className="text-center text-slate-600 mb-8">
             Find the best running options in these popular destinations
           </p>
 
@@ -110,12 +110,12 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gray-50">
+      <section className="bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Find <span className="text-green-500">run clubs</span> in <span className="text-orange-500">minutes, not months</span>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+            Find <span className="text-emerald-600">run clubs</span> in <span className="text-teal-600">minutes, not months</span>
           </h2>
-          <p className="text-gray-600 mb-8">
+          <p className="text-slate-600 mb-8">
             with robust provider data, verified reviews and one-click tours.
           </p>
           

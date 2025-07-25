@@ -18,9 +18,9 @@ export default function RunClubCard({ runClub, showDistance, distance }: RunClub
 
   return (
     <Link href={`/runclub/${runClub.id}`} className="block">
-      <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden">
+      <div className="bg-slate-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 overflow-hidden border border-slate-200">
         {/* Image */}
-        <div className="relative h-48 bg-gradient-to-br from-blue-400 via-purple-500 to-orange-500">
+        <div className="relative h-48 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500">
           <Image
             src={imageUrl}
             alt={runClub.name}
@@ -39,7 +39,7 @@ export default function RunClubCard({ runClub, showDistance, distance }: RunClub
           {/* Status Badge */}
           {runClub.business_status === 'OPERATIONAL' && (
             <div className="absolute top-3 left-3">
-              <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+              <span className="bg-emerald-500 text-white text-xs px-2 py-1 rounded-full font-medium">
                 Active
               </span>
             </div>
@@ -48,12 +48,12 @@ export default function RunClubCard({ runClub, showDistance, distance }: RunClub
 
         {/* Content */}
         <div className="p-4">
-          <h3 className="font-semibold text-lg text-gray-900 mb-1 line-clamp-2">
+          <h3 className="font-semibold text-lg text-slate-900 mb-1 line-clamp-2">
             {runClub.name}
           </h3>
 
           {/* Location */}
-          <div className="flex items-center text-gray-600 text-sm mb-2">
+          <div className="flex items-center text-slate-600 text-sm mb-2">
             <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
             <span className="line-clamp-1">
               {runClub.city}, {runClub.postal_code?.slice(0, 5)}
@@ -61,7 +61,7 @@ export default function RunClubCard({ runClub, showDistance, distance }: RunClub
           </div>
 
           {/* Category */}
-          <div className="text-sm text-gray-500 mb-3">
+          <div className="text-sm text-slate-500 mb-3">
             {runClub.category}
           </div>
 
@@ -70,12 +70,12 @@ export default function RunClubCard({ runClub, showDistance, distance }: RunClub
             <div className="flex items-center mb-3">
               <div className="flex items-center">
                 <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                <span className="ml-1 text-sm font-medium text-gray-900">
+                <span className="ml-1 text-sm font-medium text-slate-900">
                   {runClub.rating?.toFixed(1) || '0.0'}
                 </span>
               </div>
               {runClub.reviews > 0 && (
-                <span className="ml-2 text-sm text-gray-500">
+                <span className="ml-2 text-sm text-slate-500">
                   ({runClub.reviews} reviews)
                 </span>
               )}
@@ -84,7 +84,7 @@ export default function RunClubCard({ runClub, showDistance, distance }: RunClub
 
           {/* Features */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4 text-sm text-gray-600">
+            <div className="flex items-center space-x-4 text-sm text-slate-600">
               {runClub.site && (
                 <div className="flex items-center">
                   <Globe className="h-4 w-4 mr-1" />
@@ -101,7 +101,7 @@ export default function RunClubCard({ runClub, showDistance, distance }: RunClub
 
             {/* Distance */}
             {showDistance && distance && (
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-slate-500">
                 {distance.toFixed(1)} mi
               </span>
             )}
