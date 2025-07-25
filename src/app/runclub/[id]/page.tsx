@@ -11,6 +11,15 @@ interface RunClubDetailPageProps {
   params: Promise<{ id: string }>;
 }
 
+// Generate static params for all run club IDs
+export async function generateStaticParams() {
+  const allRunClubs = getAllRunClubs();
+  
+  return allRunClubs.map((runClub) => ({
+    id: runClub.id,
+  }));
+}
+
 export default async function RunClubDetailPage({ params }: RunClubDetailPageProps) {
   const { id } = await params;
   const runClub = getRunClubById(id);
